@@ -2,14 +2,37 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arun D Nair | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Arun D Nair - Computer Science Engineer specializing in AI, IoT, and innovative digital solutions. Explore my portfolio of projects and skills." />
+    <meta name="keywords" content="Arun D Nair, Portfolio, Software Engineer, AI, IoT, Flutter, Python, Web Developer, Computer Science" />
+    <meta name="author" content="Arun D Nair" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#050505" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arundnair.me/" />
+    <meta property="og:title" content="Arun D Nair | Software Engineer & Innovator" />
+    <meta property="og:description" content="Building the bridge between Human Potential and Artificial Intelligence. Explore my portfolio." />
+    <meta property="og:image" content="https://arundnair.me/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://arundnair.me/" />
+    <meta name="twitter:title" content="Arun D Nair | Software Engineer & Innovator" />
+    <meta name="twitter:description" content="Building the bridge between Human Potential and Artificial Intelligence." />
+    
+    <title>Arun D Nair | Software Engineer & Innovator</title>
+    <link rel="canonical" href="https://arundnair.me/" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -20,21 +43,43 @@
               'neon-blue': '#00f3ff',
               'neon-purple': '#bc13fe',
               'deep-bg': '#050505',
+              'light-bg': '#f3f4f6',
               'glass': 'rgba(255, 255, 255, 0.05)',
             },
             animation: {
               'spin-slow': 'spin 20s linear infinite',
               'pulse-fast': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'scanline': 'scanline 4s linear infinite',
+              'grid-flow': 'gridFlow 2s linear infinite',
+            },
+            keyframes: {
+              scanline: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(1000%)' },
+              },
+              gridFlow: {
+                '0%': { transform: 'perspective(500px) rotateX(60deg) translateY(0)' },
+                '100%': { transform: 'perspective(500px) rotateX(60deg) translateY(40px)' },
+              }
             }
           }
         }
       }
     </script>
     <style>
+      :root {
+        --bg-color: #f3f4f6;
+        --text-color: #111827;
+      }
+      html.dark {
+        --bg-color: #050505;
+        --text-color: #ffffff;
+      }
       body {
-        background-color: #050505;
-        color: #ffffff;
-        cursor: none; /* Hide default cursor for custom one */
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: none;
       }
       /* Hide scrollbar for Chrome, Safari and Opera */
       .no-scrollbar::-webkit-scrollbar {
@@ -48,9 +93,23 @@
       .gradient-text {
         background: linear-gradient(to right, #00f3ff, #bc13fe);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+      ::selection {
+        background-color: #00f3ff;
+        color: #000;
       }
     </style>
+    <script>
+      // Initialize theme to avoid flash
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
   <script type="importmap">
 {
   "imports": {
@@ -62,9 +121,10 @@
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+  <script type="module" src="/index.tsx"></script>
+</body>
 </html>

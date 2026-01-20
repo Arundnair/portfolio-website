@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   location: "Kottayam, Kerala",
   email: "arundnair5404@gmail.com",
   phone: "+91 7306606376",
-  about: "B.Tech engineering student at VISAT engineering college, Elanji with strong technical and problem-solving skills. Eager to learn, contribute and apply knowledge to real-world projects. Passionate about building a successful engineering career."
+  about: "I am a forward-thinking Computer Science Engineer driven by the intersection of Artificial Intelligence, IoT, and user-centric design. My journey is defined by a relentless pursuit of innovation—transforming abstract concepts into tangible, high-impact digital solutions. I don't just write code; I architect experiences that bridge the gap between human potential and technological capability."
 };
 
 export const PROJECTS: Project[] = [
@@ -15,14 +15,18 @@ export const PROJECTS: Project[] = [
     category: "Final Year Project",
     description: "A proactive AI Co-pilot designed to assist the visually impaired, enhancing navigation and environmental awareness through sensory feedback.",
     year: "2025 - Present",
-    tech: ["AI/ML", "Python", "IoT", "Computer Vision"]
+    tech: ["AI/ML", "Python", "IoT", "Computer Vision"],
+    githubUrl: "https://github.com/Adon-Paul/Lumisense",
+    liveUrl: "https://github.com/Adon-Paul/Lumisense"
   },
   {
     title: "LuxeCart",
     category: "Mini Project",
     description: "A fully functional e-commerce application featuring robust product listing, cart management, and user authentication systems.",
     year: "2024 - Present",
-    tech: ["Flutter", "Dart", "Firebase"]
+    tech: ["Flutter", "Dart", "Firebase"],
+    githubUrl: "https://github.com/Adon-Paul/E-Commerce",
+    liveUrl: "https://github.com/Adon-Paul/E-Commerce"
   }
 ];
 
@@ -50,54 +54,73 @@ export const EXPERIENCE: Experience[] = [
   }
 ];
 
+// Using placeholder images for demonstration. In a real app, replace with actual certificate image URLs.
+const certImage = (text: string) => `https://placehold.co/600x400/0a0a0a/00f3ff?text=${encodeURIComponent(text)}&font=roboto`;
+
 export const CERTIFICATES: Certificate[] = [
   {
     title: "Galactic Problem Solver",
-    issuer: "NASA International Space Apps Challenge",
+    issuer: "NASA Space Apps",
     date: "Oct 2025",
-    tags: ["NASA", "Innovation", "Problem Solving"]
+    tags: ["NASA", "Innovation"],
+    imageUrl: certImage("NASA Space Apps"),
+    credentialUrl: "#"
   },
   {
     title: "Ethical Hacking Internship",
-    issuer: "Retechnox Technologies LLP",
+    issuer: "Retechnox Tech",
     date: "July 2025",
-    tags: ["Security", "Ethical Hacking", "Internship"]
+    tags: ["Security", "Hacking"],
+    imageUrl: certImage("Ethical Hacking"),
+    credentialUrl: "#"
   },
   {
-    title: "IoT and Blockchain Technologies",
-    issuer: "IIIT Kottayam & CyberLabs",
+    title: "IoT and Blockchain",
+    issuer: "IIIT Kottayam",
     date: "July 2025",
-    tags: ["IoT", "Blockchain", "Add-on Course"]
+    tags: ["IoT", "Blockchain"],
+    imageUrl: certImage("IoT Certificate"),
+    credentialUrl: "#"
   },
   {
-    title: "Component X (Ideathon) - 3rd Position",
+    title: "Component X Ideathon",
     issuer: "Mulearn & Cyborgs",
     date: "Sept 2025",
-    tags: ["Ideathon", "Competition", "Innovation"]
+    tags: ["Ideathon", "Innovation"],
+    imageUrl: certImage("Ideathon Winner"),
+    credentialUrl: "#"
   },
   {
-    title: "Gemini Write-off Participation",
-    issuer: "Google Student Ambassador Program",
+    title: "Gemini Write-off",
+    issuer: "Google Ambassadors",
     date: "Nov 2025",
-    tags: ["Google", "AI", "Gemini"]
+    tags: ["Google", "AI"],
+    imageUrl: certImage("Gemini AI"),
+    credentialUrl: "#"
   },
   {
-    title: "Android-Flutter App Development",
-    issuer: "Luminar Technolab Pvt Ltd",
+    title: "App Development",
+    issuer: "Luminar Technolab",
     date: "March 2024",
-    tags: ["Flutter", "Android", "Mobile Dev"]
+    tags: ["Flutter", "Android"],
+    imageUrl: certImage("App Dev"),
+    credentialUrl: "#"
   },
   {
-    title: "Machine Learning Training School",
+    title: "ML Training School",
     issuer: "IIIT Kottayam",
     date: "Nov 2023",
-    tags: ["Machine Learning", "Python", "AI"]
+    tags: ["ML", "Python"],
+    imageUrl: certImage("ML Training"),
+    credentialUrl: "#"
   },
   {
-    title: "Python Pulse Programming",
-    issuer: "MSME-Technology Development Centre",
+    title: "Python Pulse",
+    issuer: "MSME-TDC",
     date: "June 2023",
-    tags: ["Python", "Programming", "MSME"]
+    tags: ["Python", "MSME"],
+    imageUrl: certImage("Python Pulse"),
+    credentialUrl: "#"
   }
 ];
 

@@ -4,6 +4,8 @@ export interface Project {
   description: string;
   year: string;
   tech: string[];
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 export interface Experience {
@@ -25,6 +27,8 @@ export interface Certificate {
   issuer: string;
   date: string;
   tags: string[];
+  imageUrl?: string;
+  credentialUrl?: string;
 }
 
 export interface SocialLink {
