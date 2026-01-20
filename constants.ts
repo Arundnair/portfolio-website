@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   location: "Kottayam, Kerala",
   email: "arundnair5404@gmail.com",
   phone: "+91 7306606376",
-  about: "B.Tech engineering student at VISAT engineering college, Elanji with strong technical and problem-solving skills. Eager to learn, contribute and apply knowledge to real-world projects. Passionate about building a successful engineering career."
+  about: "I am a forward-thinking Computer Science Engineer driven by the intersection of Artificial Intelligence, IoT, and user-centric design. My journey is defined by a relentless pursuit of innovation—transforming abstract concepts into tangible, high-impact digital solutions. I don't just write code; I architect experiences that bridge the gap between human potential and technological capability."
 };
 
 export const PROJECTS: Project[] = [

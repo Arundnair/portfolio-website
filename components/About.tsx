@@ -1,96 +1,134 @@
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 import { PERSONAL_INFO } from '../constants';
+import { Cpu, Globe, Zap, Database } from 'lucide-react';
 
 const About: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10%" });
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.03,
+        staggerChildren: 0.1,
       },
     },
   };
 
-  const lineVariants = {
-    hidden: { y: "100%", opacity: 0 },
+  const itemVariants: Variants = {
+    hidden: { y: 20, opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+        ease: [0.16, 1, 0.3, 1]
       }
     },
   };
 
   return (
-    <section className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto relative overflow-hidden" id="about">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20">
-        <div className="md:col-span-4">
+    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto relative overflow-hidden" id="about">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-neon-purple/5 to-transparent rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+        
+        {/* Left Column - Header & Visuals */}
+        <div className="md:col-span-5 relative">
           <motion.div
-             initial={{ opacity: 0, scaleY: 0 }}
-             animate={isInView ? { opacity: 1, scaleY: 1 } : {}}
-             transition={{ duration: 0.8, ease: "circOut" }}
-             className="origin-top"
+             initial={{ opacity: 0, x: -20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+             className="sticky top-32"
           >
-            <h2 className="text-[10px] md:text-sm font-mono text-neon-blue tracking-[0.4em] md:tracking-[0.5em] mb-4 md:mb-8 uppercase">
-              01. Background
+            <h2 className="text-xs font-mono text-neon-blue tracking-[0.5em] mb-6 uppercase flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-neon-blue"></span>
+              01. The Profile
             </h2>
+            
+            <h3 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white leading-tight mb-8">
+              Architecting <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">Digital Reality</span>
+            </h3>
+
+            {/* Stylized "Card" */}
+            <div className="relative p-6 rounded-2xl bg-white/50 dark:bg-white/5 border border-black/5 dark:border-white/10 backdrop-blur-xl overflow-hidden shadow-xl dark:shadow-none group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-blue to-neon-purple"></div>
+                <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center text-xl font-bold font-display text-gray-700 dark:text-white">
+                        AN
+                    </div>
+                    <div>
+                        <div className="text-sm font-bold text-gray-900 dark:text-white">Arun D Nair</div>
+                        <div className="text-xs text-gray-500 font-mono">System.Online</div>
+                    </div>
+                </div>
+                <div className="space-y-3">
+                    <div className="flex justify-between text-xs border-b border-black/5 dark:border-white/5 pb-2">
+                        <span className="text-gray-500">Location</span>
+                        <span className="text-gray-900 dark:text-white font-medium text-right">{PERSONAL_INFO.location}</span>
+                    </div>
+                    <div className="flex justify-between text-xs border-b border-black/5 dark:border-white/5 pb-2">
+                        <span className="text-gray-500">Education</span>
+                        <span className="text-gray-900 dark:text-white font-medium text-right">B.Tech CSE</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                        <span className="text-gray-500">Focus</span>
+                        <span className="text-neon-blue font-medium text-right">AI & IoT Innovation</span>
+                    </div>
+                </div>
+            </div>
           </motion.div>
-          <div className="hidden md:block relative h-64">
-            <motion.div
-              initial={{ height: 0 }}
-              animate={isInView ? { height: '100%' } : {}}
-              transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
-              className="w-[1px] bg-gradient-to-b from-neon-blue via-neon-purple/50 to-transparent"
-            />
-          </div>
         </div>
         
-        <div className="md:col-span-8" ref={ref}>
+        {/* Right Column - Main Content */}
+        <div className="md:col-span-7" ref={ref}>
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="flex flex-wrap"
+            className="prose dark:prose-invert max-w-none"
           >
-            {PERSONAL_INFO.about.split(" ").map((word, i) => (
-              <div key={i} className="overflow-hidden mr-2 md:mr-3 mb-1 md:mb-2">
-                <motion.span
-                  variants={lineVariants}
-                  className="inline-block font-display text-2xl md:text-6xl leading-[1.2] md:leading-[1.1] font-light text-gray-800 dark:text-white/90"
-                >
-                  {word}
-                </motion.span>
-              </div>
-            ))}
-          </motion.div>
+            {/* Split text animation for main paragraph */}
+            <div className="mb-10">
+                {PERSONAL_INFO.about.split(". ").map((sentence, sIndex) => (
+                    <motion.p key={sIndex} variants={itemVariants} className="text-lg md:text-xl text-gray-700 dark:text-gray-300 font-light leading-relaxed mb-6">
+                        {sentence}.
+                    </motion.p>
+                ))}
+            </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-12 md:mt-20 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 font-mono text-[10px] md:text-xs tracking-wider text-gray-500 border-t border-black/5 dark:border-white/5 pt-8 md:pt-12 uppercase"
-          >
-             <div className="group cursor-default">
-               <span className="block text-neon-blue mb-3 md:mb-4 tracking-[0.2em] md:tracking-[0.3em]">Education / Status</span>
-               <p className="text-gray-900 dark:text-white text-base md:text-lg font-display normal-case leading-tight">
-                 B.Tech Computer Science Engineering<br/>
-                 <span className="text-gray-500 text-xs md:text-sm">VISAT Engineering (2022-2026)</span>
-               </p>
-             </div>
-             <div className="group cursor-default">
-               <span className="block text-neon-purple mb-3 md:mb-4 tracking-[0.2em] md:tracking-[0.3em]">Current Focus</span>
-               <p className="text-gray-900 dark:text-white text-base md:text-lg font-display normal-case leading-tight">
-                 AI/ML Applications & <br/>
-                 Cross-platform Mobile Development
-               </p>
-             </div>
+            {/* Interest Grid */}
+            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4">
+                {[
+                    { icon: <Cpu className="w-5 h-5"/>, title: "Deep Learning", desc: "Neural Networks & CV" },
+                    { icon: <Globe className="w-5 h-5"/>, title: "Web Technologies", desc: "React & Next.js" },
+                    { icon: <Zap className="w-5 h-5"/>, title: "IoT Systems", desc: "Embedded Logic" },
+                    { icon: <Database className="w-5 h-5"/>, title: "Data Engineering", desc: "Processing & Analytics" },
+                ].map((item, index) => (
+                    <div key={index} className="p-4 rounded-xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 hover:border-neon-blue/30 transition-colors group">
+                        <div className="mb-3 text-neon-blue group-hover:scale-110 transition-transform duration-300 origin-left">
+                            {item.icon}
+                        </div>
+                        <div className="font-bold text-gray-900 dark:text-white text-sm mb-1">{item.title}</div>
+                        <div className="text-xs text-gray-500">{item.desc}</div>
+                    </div>
+                ))}
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="mt-12 p-6 bg-gradient-to-r from-neon-blue/10 to-neon-purple/10 rounded-2xl border border-neon-blue/20 flex items-center justify-between">
+                <div>
+                    <div className="text-xs font-mono text-neon-blue mb-1">CURRENTLY WORKING ON</div>
+                    <div className="text-lg font-bold text-gray-900 dark:text-white">LumiSense AI Co-pilot</div>
+                </div>
+                <div className="animate-pulse">
+                    <div className="w-3 h-3 bg-neon-blue rounded-full"></div>
+                </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
