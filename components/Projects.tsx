@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, Variants } from 'framer-motion';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
 import { 
@@ -28,6 +28,29 @@ const getTechIcon = (tech: string) => {
   if (t.includes('dart')) return <Terminal className="w-3 h-3" />;
   if (t.includes('database')) return <Database className="w-3 h-3" />;
   return <Layers className="w-3 h-3" />;
+};
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 50,
+      damping: 20
+    }
+  }
 };
 
 const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
@@ -62,10 +85,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: index * 0.1 }}
+            variants={cardVariants}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
@@ -202,11 +222,17 @@ const Projects: React.FC = () => {
             </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 perspective-[2500px]">
+        <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 perspective-[2500px]"
+        >
             {PROJECTS.map((project, index) => (
                 <ProjectCard key={project.title} project={project} index={index} />
             ))}
-        </div>
+        </motion.div>
     </section>
   );
 };
