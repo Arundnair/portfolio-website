@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
         <div className="overflow-visible mb-6 relative">
           <motion.h1 
             variants={itemVariants} 
-            className="font-display text-[12vw] md:text-[10rem] font-bold tracking-tighter leading-[0.85] gradient-text uppercase mix-blend-difference dark:mix-blend-normal"
+            className="font-display text-[12vw] md:text-[10rem] font-bold tracking-tighter leading-[0.85] gradient-text uppercase"
           >
             {nameWords.map((word, i) => (
               <span key={i} className="inline-block mr-4 md:mr-8 last:mr-0">{word}</span>
